@@ -1,0 +1,70 @@
+﻿<Window x:Class="notatnik.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:notatnik"
+        mc:Ignorable="d"
+        Title="Notatnik Pro " Height="600" Width="1000">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="25"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Menu Height="auto" VerticalAlignment="Center">
+                    <MenuItem Header="_Plik" >
+                        <MenuItem Header="_Nowe okno" Click="MenuItemNewWindow_Click"/>
+                        <MenuItem Header="_Otwórz..." Click="MenuItemOpenFile_Click"/>
+                        <MenuItem Header="_Zapisz jako..." Click="MenuItemSaveFileAs_Click"/>
+                        <Separator />
+                        <MenuItem Header="_Zakończ" Click="MenuItemClose_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="_Edycja">
+                        <MenuItem Header="_Cofnij / Ctrl+Z" Command="Undo" FocusManager.IsFocusScope="True"></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="_Wytnij / Ctrl+X" Command="Cut" FocusManager.IsFocusScope="True"></MenuItem>
+                        <MenuItem Header="_Kopiuj / Ctrl+C" Command="Copy" FocusManager.IsFocusScope="True"></MenuItem>
+                        <MenuItem Header="_Wklej  / Ctrl+V" Command="Paste" FocusManager.IsFocusScope="True"></MenuItem>
+                        <MenuItem Header="_Usuń   / Del" Command="Delete" FocusManager.IsFocusScope="True"></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="_Zaznacz wszystko / Ctrl+A" Command="SelectAll" FocusManager.IsFocusScope="True"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="_Format">
+                        <MenuItem Header="_Zawijanie wierszy" Click="MenuItemTextWrapping_Click" IsCheckable="True" IsChecked="True" x:Name="textwrapbutton"></MenuItem>
+                        <MenuItem Header="_Czcionka" Click="MenuItemChooseFont_Click"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="_Widok">
+                        <MenuItem Header="_Powiększenie">
+                            <MenuItem Header="_Powiększ  / Ctrl +" Click="MenuItem_Click"></MenuItem>
+                            <MenuItem Header="_Pomniejsz / Ctrl -" Click="MenuItem_Click_1"></MenuItem>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="_Pomoc">
+                        <MenuItem Header="_Wyświetl Pomoc" Click="MenuItem_Click_2"></MenuItem>
+                    </MenuItem>
+                </Menu>
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <TextBox Height="400" Width="800" TextWrapping="Wrap" AcceptsReturn="True" x:Name="mainInputField" TextChanged="mainInputField_TextChanged">
+                    
+                </TextBox>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" HorizontalAlignment="Center" x:Name="count_signs">Ilość znaków: 0</TextBlock>
+                <TextBlock Grid.Column="1" HorizontalAlignment="Center" x:Name="count_verbs">Ilość wyrazów: 0</TextBlock>
+            </Grid>
+        </Grid>
+    </Grid>
+    
+</Window>
